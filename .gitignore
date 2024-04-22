@@ -1,0 +1,4 @@
+*/.vs/*
+*/bin/*
+*/obj/*
+*/Geometry.sln
