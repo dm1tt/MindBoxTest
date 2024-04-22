@@ -1,11 +1,17 @@
 namespace Geometry.FigureModels;
 public abstract class BaseFigure
 {
-    private readonly double _square;
-    public double Square => _square;
-    public BaseFigure()
+    protected double _square;
+    public double Square
     {
-        _square = CalculateSquare();
+        get
+        {
+            if (_square == 0)
+            {
+                _square = CalculateSquare();
+            }
+            return _square;
+        }
     }
     protected abstract double CalculateSquare();
 }

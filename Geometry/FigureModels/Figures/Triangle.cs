@@ -63,15 +63,9 @@ public class Triangle : BaseFigure
     /// <returns>true - треугольник прямоугольный, false - нет</returns>
     private bool CheckIsItRightTriangle()
     {
-        double hypotenuse = FirstSide;
-
-        if (hypotenuse < SecondSide)
-            hypotenuse = SecondSide;
-
-        if (hypotenuse < ThirdSide)
-            hypotenuse = ThirdSide;
-
-        return Math.Pow(hypotenuse, 2) == Math.Pow(FirstSide, 2) + Math.Pow(ThirdSide, 2);
+        var sides = new double[] { FirstSide, SecondSide, ThirdSide };
+        Array.Sort(sides);
+        return Math.Pow(sides[2], 2) == Math.Pow(sides[0], 2) + Math.Pow(sides[1], 2);
     }
 
     /// <summary>
