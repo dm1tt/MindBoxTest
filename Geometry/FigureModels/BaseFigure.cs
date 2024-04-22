@@ -1,7 +1,15 @@
 namespace Geometry.FigureModels;
+
+/// <summary>
+/// Представляет абстрактную модель фигуры.
+/// </summary>
 public abstract class BaseFigure
 {
-    protected double _square;
+    private double _square;
+
+    /// <summary>
+    /// Площадь фигуры.
+    /// </summary>
     public double Square
     {
         get
@@ -13,5 +21,17 @@ public abstract class BaseFigure
             return _square;
         }
     }
+
+    /// <summary>
+    /// Вычисление площади фигуры.
+    /// </summary>
+    /// <returns>Площадь фигуры.</returns>
     protected abstract double CalculateSquare();
+
+    /// <summary>
+    /// Возведение переменной типа double в квадрат.
+    /// </summary>
+    /// <param name="val">Число для возведения в степень.</param>
+    /// <returns>Квадрат val.</returns>
+    protected static double Power(double val) => val * val;
 }

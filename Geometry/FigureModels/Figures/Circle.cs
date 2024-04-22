@@ -30,6 +30,6 @@ public class Circle : BaseFigure
     /// <returns>Площадь радиуса.</returns>
     protected override double CalculateSquare()
     {
-        return Math.PI * Math.Pow(Radius, 2);
+        return Math.PI * Power(Radius);
     }
 }

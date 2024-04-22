@@ -5,7 +5,7 @@ namespace Geometry.FigureModels.Figures;
 /// </summary>
 public class Triangle : BaseFigure
 {
-    private readonly bool _isItRightTriangle;
+    private readonly bool _isRectangular;
 
     /// <summary>
     /// Возвращает длину первой стороны треугольника.
@@ -25,7 +25,7 @@ public class Triangle : BaseFigure
     /// <summary>
     /// Возвращает bool значение, указывающее является ли треугольник прямоугольным.
     /// </summary>
-    public bool IsItRightTriangle => _isItRightTriangle;
+    public bool IsRectangular => _isRectangular;
 
     /// <summary>
     /// Инициализирует новый экземпляр класса Triangle с указанными длинами сторон.
@@ -44,7 +44,7 @@ public class Triangle : BaseFigure
         FirstSide = firstSide;
         SecondSide = secondSide;
         ThirdSide = thirdSide;
-        _isItRightTriangle = CheckIsItRightTriangle();
+        _isRectangular = CheckIsRectangular();
     }
 
     /// <summary>
@@ -54,6 +54,7 @@ public class Triangle : BaseFigure
     protected override double CalculateSquare()
     {
         var halfPerimeter = (FirstSide + SecondSide + ThirdSide) / 2;
+        
         return Math.Sqrt(halfPerimeter * (halfPerimeter - FirstSide) * (halfPerimeter - SecondSide) * (halfPerimeter - ThirdSide));
     }
 
@@ -61,11 +62,12 @@ public class Triangle : BaseFigure
     /// Проверяет является ли треугольника прямоугольным.
     /// </summary>
     /// <returns>true - треугольник прямоугольный, false - нет</returns>
-    private bool CheckIsItRightTriangle()
+    private bool CheckIsRectangular()
     {
         var sides = new double[] { FirstSide, SecondSide, ThirdSide };
         Array.Sort(sides);
-        return Math.Pow(sides[2], 2) == Math.Pow(sides[0], 2) + Math.Pow(sides[1], 2);
+
+        return Power(sides[2]) == Power(sides[0]) + Power(sides[1]);
     }
 
     /// <summary>
@@ -77,11 +79,10 @@ public class Triangle : BaseFigure
     /// <returns>true - треугольник валидный, false - нет.</returns>
     private static bool IsTriangleValid(double side1, double side2, double side3)
     {
-        return (side1 + side2 > side3)
-            && (side1 + side3 > side2)
-            && (side2 + side3 > side1)
-            && side1 > 0
-            && side2 > 0
-            && side3 > 0;
+        var a = side1 + side2 > side3;
+        var b = side1 + side3 > side2;
+        var c = side2 + side3 > side1;
+
+        return a && b && c && side1 > 0 && side2 > 0 && side3 > 0;
     }
 }
