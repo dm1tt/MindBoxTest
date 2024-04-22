@@ -68,15 +68,15 @@ public class TriangleTests
     public void CheckIsItRightTriangle_NotRightTriangle_ReturnsFalse()
     {
         // Arrange
-            double firstSide = 3;
-            double secondSide = 4;
-            double thirdSide = 6; // Неправильный треугольник
+        double firstSide = 3;
+        double secondSide = 4;
+        double thirdSide = 6;
 
-            // Act
-            Triangle triangle = new Triangle(firstSide, secondSide, thirdSide);
-            bool isRightTriangle = triangle.IsItRightTriangle;
+        // Act
+        Triangle triangle = new Triangle(firstSide, secondSide, thirdSide);
+        bool isRightTriangle = triangle.IsItRightTriangle;
 
-            // Assert
-            Assert.False(isRightTriangle);
+        // Assert
+        Assert.False(isRightTriangle);
     }
 }
